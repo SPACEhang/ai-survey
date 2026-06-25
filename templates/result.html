@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>问卷收集结果</title>
+    <style>
+        table{width:90%;margin:30px auto;border-collapse:collapse;}
+        th,td{border:1px solid #999;padding:10px;text-align:center;}
+        th{background:#eee;}
+        a{display:block;width:90%;margin:20px auto;text-decoration:none;color:#007bff;}
+    </style>
+</head>
+<body>
+<a href="/">← 返回填写问卷</a>
+<h2 style="text-align:center">全部问卷数据（共{{data|length}}条）</h2>
+<table>
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>AI态度</th>
+        <th>建议</th>
+    </tr>
+    {% for row in data %}
+    <tr>
+        <td>{{row.name}}</td>
+        <td>{{row.age}}</td>
+        <td>{{row.gender}}</td>
+        <td>{{row.like_ai}}</td>
+        <td>{{row.suggest}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
