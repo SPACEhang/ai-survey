@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>AI发展态度调查问卷</title>
+    <style>
+        .box{width:600px;margin:50px auto;padding:30px;border:1px solid #ccc;border-radius:8px;}
+        .item{margin:15px 0;}
+        label{display:block;margin-bottom:6px;}
+        input,select,textarea{width:100%;padding:8px;box-sizing:border-box;}
+        button{padding:10px 30px;background:#007bff;color:#fff;border:none;border-radius:4px;cursor:pointer;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>大众对AI发展态度调查问卷</h2>
+    <form id="surveyForm" action="/submit" method="POST">
+        <div class="item">
+            <label>姓名</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="item">
+            <label>年龄</label>
+            <input type="number" name="age" min="1" max="120" required>
+        </div>
+        <div class="item">
+            <label>性别</label>
+            <select name="gender" required>
+                <option value="">请选择</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
+        <div class="item">
+            <label>你对AI发展的态度</label>
+            <select name="like_ai" required>
+                <option value="">请选择</option>
+                <option value="非常看好">非常看好</option>
+                <option value="中立观望">中立观望</option>
+                <option value="担忧风险">担忧风险</option>
+            </select>
+        </div>
+        <div class="item">
+            <label>你的建议（无则填无）</label>
+            <textarea name="suggest" rows="3"></textarea>
+        </div>
+        <div class="item">
+            <button type="submit">提交问卷</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // 检查URL中是否有success参数（后端跳转带过来的）
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === '1') {
+        alert('您已提交完成！感谢您的参与。');
+        // 弹窗确认后清除参数，避免刷新重复弹窗
+        window.history.replaceState({}, document.title, '/');
+    }
+</script>
+</body>
+</html>
